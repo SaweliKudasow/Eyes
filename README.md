@@ -53,12 +53,6 @@ You can easily change:
 
 ---
 
-## 📸 Preview
-
-![Eyes Follow Mouse Demo](Preview.gif)
-
----
-
 ## 🧑‍💻 Author
 
 Saweli Kudasow
