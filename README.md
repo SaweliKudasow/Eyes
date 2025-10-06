@@ -51,14 +51,20 @@ You can easily change:
 	•	Blink speed → tweak transition times in .eye::after
 	•	Idle time → edit IDLE_MS in script.js
 
+---
+
 ## 📸 Preview
 
-![Eyes Follow Mouse Demo](preview.gif)
+![Eyes Follow Mouse Demo](Preview.gif)
 
-🧑‍💻 Author
+---
+
+## 🧑‍💻 Author
 
 Saweli Kudasow
 
-📜 License
+---
+
+## 📜 License
 
 This project is free to use for educational purposes.
