@@ -37,7 +37,7 @@ Built using **HTML, CSS, and JavaScript**, this project demonstrates simple yet 
 ## 🚀 How to Run
 
 1. Clone or download this repository  
-   	•	git clone https://github.com/SaweliKudasow/Eyes.git
+   	- git clone https://github.com/SaweliKudasow/Eyes.git
 2.	Open index.html in your browser
 3.	Move your mouse around — the eyes will follow you 
 
@@ -46,10 +46,10 @@ Built using **HTML, CSS, and JavaScript**, this project demonstrates simple yet 
 ## 🎨 Customization
 
 You can easily change:
-	•	Eye size → adjust .eye width/height in CSS
-	•	Pupil size → modify .pupil dimensions
-	•	Blink speed → tweak transition times in .eye::after
-	•	Idle time → edit IDLE_MS in script.js
+- Eye size → adjust .eye width/height in CSS
+- Pupil size → modify .pupil dimensions
+- Blink speed → tweak transition times in .eye::after
+- Idle time → edit IDLE_MS in script.js
 
 ---
 
