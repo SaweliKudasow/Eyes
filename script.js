@@ -12,6 +12,8 @@ document.addEventListener('touchstart', (e) => {
     // Touch-Status setzen
     isTouching = true;
     clearTimeout(touchTimer);
+    // Augen öffnen bei Touch
+    resetIdle();
 }, { passive: false });
 
 // Browser Geste blockieren
@@ -50,7 +52,7 @@ function resetIdle() { // wenn Bewegung -> wach bleiben
 
 window.addEventListener("mousemove", resetIdle, { passive: true }); // Maus bewegt sich
 // window.addEventListener("keydown", resetIdle); // Taste gedrückt
-window.addEventListener("touchstart", resetIdle, { passive: true }); // Touch erkannt
+// touchstart wird bereits oben behandelt (Scroll-Blockierung + Touch-Status)
 
 window.addEventListener("mouseout", (e) => { // Maus verlässt Fenster
 	if (!e.relatedTarget && !e.toElement) setClosed(true); // Augen zu
