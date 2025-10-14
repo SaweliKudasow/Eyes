@@ -25,7 +25,7 @@ function resetIdle() { // wenn Bewegung -> wach bleiben
 
 window.addEventListener("mousemove", resetIdle, { passive: true }); // Maus bewegt sich
 // window.addEventListener("keydown", resetIdle); // Taste gedrückt
-// window.addEventListener("touchstart", resetIdle, { passive: true }); // Touch erkannt
+window.addEventListener("touchstart", resetIdle, { passive: true }); // Touch erkannt
 
 window.addEventListener("mouseout", (e) => { // Maus verlässt Fenster
 	if (!e.relatedTarget && !e.toElement) setClosed(true); // Augen zu
@@ -52,6 +52,21 @@ window.addEventListener("mousemove", e => { // Maus bewegt sich
 	target.x = e.clientX; // X-Position speichern
 	target.y = e.clientY; // Y-Position speichern
 });
+
+// Touch: Blick auf die Touch-Position richten
+window.addEventListener("touchstart", (e) => {
+	const t = e.touches[0] || e.changedTouches && e.changedTouches[0];
+	if (!t) return;
+	target.x = t.clientX;
+	target.y = t.clientY;
+}, { passive: true });
+
+window.addEventListener("touchmove", (e) => {
+	const t = e.touches[0] || e.changedTouches && e.changedTouches[0];
+	if (!t) return;
+	target.x = t.clientX;
+	target.y = t.clientY;
+}, { passive: true });
 
 const maxOffset = 25; // maximale Bewegung (px)
 const ease = 0.18; // Bewegungsglättung
