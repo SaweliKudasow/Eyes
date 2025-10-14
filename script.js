@@ -74,8 +74,7 @@ updateCenters(); // einmal starten
 window.addEventListener("resize", updateCenters); // bei Fenstergröße neu
 window.addEventListener("scroll", updateCenters, { passive: true }); // bei Scroll neu
 
-// Beim Laden der Seite: Inaktivitäts-Timer starten
-resetIdle();
+// Beim Laden der Seite: Inaktivitäts-Timer starten (wird am Ende des Skripts aufgerufen)
 
 const target = { x: 0, y: 0 }; // Zielposition der Maus
 window.addEventListener("mousemove", e => { // Maus bewegt sich
@@ -165,3 +164,8 @@ tick(); // starten
 
 	scheduleNextBlink(); // starten
 })();
+
+// Nach dem Laden aller Komponenten: Inaktivitäts-Timer starten
+document.addEventListener('DOMContentLoaded', () => {
+	resetIdle();
+});
