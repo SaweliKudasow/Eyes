@@ -9,6 +9,9 @@ document.addEventListener('touchmove', (e) => {
 
 document.addEventListener('touchstart', (e) => {
     e.preventDefault();
+    // Touch-Status setzen
+    isTouching = true;
+    clearTimeout(touchTimer);
 }, { passive: false });
 
 // Browser Geste blockieren
@@ -91,12 +94,10 @@ window.addEventListener("touchmove", (e) => {
 }, { passive: true });
 
 // Touch-Status verfolgen: Augen offen halten, solange Finger auf dem Bildschirm ist
-window.addEventListener("touchstart", () => {
-	isTouching = true;
-	clearTimeout(touchTimer);
-}, { passive: true });
+// (touchstart wird bereits oben behandelt)
 
-window.addEventListener("touchend", () => {
+document.addEventListener("touchend", (e) => {
+	e.preventDefault();
 	isTouching = false;
 	// Kurze Verzögerung vor möglichem Schließen
 	touchTimer = setTimeout(() => {
@@ -104,12 +105,13 @@ window.addEventListener("touchend", () => {
 			resetIdle(); // Timer neu starten
 		}
 	}, 500);
-}, { passive: true });
+}, { passive: false });
 
-window.addEventListener("touchcancel", () => {
+document.addEventListener("touchcancel", (e) => {
+	e.preventDefault();
 	isTouching = false;
 	clearTimeout(touchTimer);
-}, { passive: true });
+}, { passive: false });
 
 const maxOffset = 25; // maximale Bewegung (px)
 const ease = 0.18; // Bewegungsglättung
