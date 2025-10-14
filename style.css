@@ -1,4 +1,12 @@
 /* Seite */
+html, body {
+    height: 100%;
+    overflow: hidden; /* блокируем скролл */
+    touch-action: none; /* отключаем жесты браузера */
+    position: fixed; /* фиксируем viewport */
+    width: 100%;
+}
+
 body {
     background: #121212;
     display: flex;
@@ -6,7 +14,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-	
 }
 
 /* Augen Gruppe */
