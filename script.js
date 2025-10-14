@@ -2,6 +2,20 @@
 // = Augen folgen der Maus und schliesen sich nach Inaktivität =
 // =============================================================
 
+// Scroll blockieren
+document.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+}, { passive: false });
+
+document.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+}, { passive: false });
+
+// Browser Geste blockieren
+document.addEventListener('gesturestart', (e) => {
+    e.preventDefault();
+});
+
 const eyes = Array.from(document.querySelectorAll(".eye")); // alle Augen finden
 const pupils = eyes.map(eye => eye.querySelector(".pupil")); // Pupillen holen
 
