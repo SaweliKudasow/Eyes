@@ -22,8 +22,13 @@ const pupils = eyes.map(eye => eye.querySelector(".pupil")); // Pupillen holen
 window.forcedClosed = false; // merken, ob Augen zu sind
 const eyesEls = Array.from(document.querySelectorAll(".eye")); // Liste der Augen
 
+// Touch-Status verfolgen: Augen schließen sich nicht, solange Finger auf dem Bildschirm ist
+let isTouching = false;
+let touchTimer = null;
+
 function setClosed(on) { // Augen öffnen oder schließen
 	if (on === window.forcedClosed) return; // nichts ändern
+	if (on && isTouching) return; // NICHT schließen, wenn Finger auf dem Bildschirm ist
 	window.forcedClosed = on; // Zustand speichern
 	eyesEls.forEach(e => e.classList.toggle("blink", on)); // Klasse "blink" setzen
 }
@@ -34,7 +39,10 @@ const IDLE_MS = 3500; // 3.5 Sekunden warten
 function resetIdle() { // wenn Bewegung -> wach bleiben
 	clearTimeout(idleTimer); // alten Timer löschen
 	if (window.forcedClosed) setClosed(false); // Augen öffnen
-	idleTimer = setTimeout(() => setClosed(true), IDLE_MS); // nach Pause schließen
+	// Timer nur starten, wenn Finger nicht auf dem Bildschirm ist
+	if (!isTouching) {
+		idleTimer = setTimeout(() => setClosed(true), IDLE_MS); // nach Pause schließen
+	}
 }
 
 window.addEventListener("mousemove", resetIdle, { passive: true }); // Maus bewegt sich
@@ -80,6 +88,27 @@ window.addEventListener("touchmove", (e) => {
 	if (!t) return;
 	target.x = t.clientX;
 	target.y = t.clientY;
+}, { passive: true });
+
+// Touch-Status verfolgen: Augen offen halten, solange Finger auf dem Bildschirm ist
+window.addEventListener("touchstart", () => {
+	isTouching = true;
+	clearTimeout(touchTimer);
+}, { passive: true });
+
+window.addEventListener("touchend", () => {
+	isTouching = false;
+	// Kurze Verzögerung vor möglichem Schließen
+	touchTimer = setTimeout(() => {
+		if (!isTouching) {
+			resetIdle(); // Timer neu starten
+		}
+	}, 500);
+}, { passive: true });
+
+window.addEventListener("touchcancel", () => {
+	isTouching = false;
+	clearTimeout(touchTimer);
 }, { passive: true });
 
 const maxOffset = 25; // maximale Bewegung (px)
