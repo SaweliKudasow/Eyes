@@ -74,6 +74,9 @@ updateCenters(); // einmal starten
 window.addEventListener("resize", updateCenters); // bei Fenstergröße neu
 window.addEventListener("scroll", updateCenters, { passive: true }); // bei Scroll neu
 
+// Beim Laden der Seite: Inaktivitäts-Timer starten
+resetIdle();
+
 const target = { x: 0, y: 0 }; // Zielposition der Maus
 window.addEventListener("mousemove", e => { // Maus bewegt sich
 	target.x = e.clientX; // X-Position speichern
