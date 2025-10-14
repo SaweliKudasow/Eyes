@@ -24,8 +24,8 @@ function resetIdle() { // wenn Bewegung -> wach bleiben
 }
 
 window.addEventListener("mousemove", resetIdle, { passive: true }); // Maus bewegt sich
-window.addEventListener("keydown", resetIdle); // Taste gedrückt
-window.addEventListener("touchstart", resetIdle, { passive: true }); // Touch erkannt
+// window.addEventListener("keydown", resetIdle); // Taste gedrückt
+// window.addEventListener("touchstart", resetIdle, { passive: true }); // Touch erkannt
 
 window.addEventListener("mouseout", (e) => { // Maus verlässt Fenster
 	if (!e.relatedTarget && !e.toElement) setClosed(true); // Augen zu
