@@ -1,4 +1,4 @@
-# 👀 Eye Tracker Animation
+# 👀 Cursor Tracker
 
 A small interactive web project where **two eyes follow your mouse cursor** and **blink naturally** — just like real ones.  
 Built using **HTML, CSS, and JavaScript**, this project demonstrates simple yet smooth animation and user interactivity in the browser.
@@ -36,20 +36,7 @@ Built using **HTML, CSS, and JavaScript**, this project demonstrates simple yet 
 
 ## 🚀 How to Run
 
-1. Clone or download this repository  
-   	- git clone https://github.com/SaweliKudasow/Eyes.git
-2.	Open index.html in your browser
-3.	Move your mouse around — the eyes will follow you 
-
----
-
-## 🎨 Customization
-
-You can easily change:
-- Eye size → adjust .eye width/height in CSS
-- Pupil size → modify .pupil dimensions
-- Blink speed → tweak transition times in .eye::after
-- Idle time → edit IDLE_MS in script.js
+- Visit [this page](https://sawelikudasow.github.io/CursorTracker/).
 
 ---
 
